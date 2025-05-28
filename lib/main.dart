@@ -12,6 +12,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Aryan Trivedi',
       debugShowCheckedModeBanner: false,
       theme: theme,
       themeMode: ThemeMode.dark,

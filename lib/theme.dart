@@ -1,86 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 final Color primaryTealBlue = const Color(0xFF4C8DAE);
 
-final TextTheme baseTextTheme = GoogleFonts.spaceMonoTextTheme();
-
-final TextTheme _textTheme = baseTextTheme.copyWith(
-  displayLarge: baseTextTheme.displayLarge?.copyWith(
-    fontSize: 48,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
-  ),
-  displayMedium: baseTextTheme.displayMedium?.copyWith(
-    fontSize: 40,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
-  ),
-  displaySmall: baseTextTheme.displaySmall?.copyWith(
-    fontSize: 32,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
-  ),
-  headlineLarge: baseTextTheme.headlineLarge?.copyWith(
-    fontSize: 28,
-    fontWeight: FontWeight.w700,
-    color: Colors.white,
-  ),
-  headlineMedium: baseTextTheme.headlineMedium?.copyWith(
-    fontSize: 24,
-    fontWeight: FontWeight.w600,
-    color: Colors.white,
-  ),
-  headlineSmall: baseTextTheme.headlineSmall?.copyWith(
-    fontSize: 20,
-    fontWeight: FontWeight.w600,
-    color: Colors.white,
-  ),
-  titleLarge: baseTextTheme.titleLarge?.copyWith(
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
-    color: Colors.white,
-  ),
-  titleMedium: baseTextTheme.titleMedium?.copyWith(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    color: Colors.white,
-  ),
-  titleSmall: baseTextTheme.titleSmall?.copyWith(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    color: Colors.white,
-  ),
-  bodyLarge: baseTextTheme.bodyLarge?.copyWith(
-    fontSize: 20,
-    fontWeight: FontWeight.w400,
-    color: Colors.white,
-  ),
-  bodyMedium: baseTextTheme.bodyMedium?.copyWith(
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    color: Colors.white70,
-  ),
-  bodySmall: baseTextTheme.bodySmall?.copyWith(
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color: Colors.white60,
-  ),
-  labelLarge: baseTextTheme.labelLarge?.copyWith(
-    fontSize: 14,
-    fontWeight: FontWeight.w600,
-    color: Colors.white,
-  ),
-  labelMedium: baseTextTheme.labelMedium?.copyWith(
-    fontSize: 13,
-    fontWeight: FontWeight.w500,
-    color: Colors.white,
-  ),
-  labelSmall: baseTextTheme.labelSmall?.copyWith(
-    fontSize: 10,
-    fontWeight: FontWeight.w500,
-    color: Colors.white,
-  ),
+final TextTheme _textTheme = const TextTheme(
+  displayLarge: TextStyle(fontFamily: 'SpaceMono', fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white),
+  displayMedium: TextStyle(fontFamily: 'SpaceMono', fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+  displaySmall: TextStyle(fontFamily: 'SpaceMono', fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+  headlineLarge: TextStyle(fontFamily: 'SpaceMono', fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
+  headlineMedium: TextStyle(fontFamily: 'SpaceMono', fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+  headlineSmall: TextStyle(fontFamily: 'SpaceMono', fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
+  titleLarge: TextStyle(fontFamily: 'SpaceMono', fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white),
+  titleMedium: TextStyle(fontFamily: 'SpaceMono', fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
+  titleSmall: TextStyle(fontFamily: 'SpaceMono', fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
+  bodyLarge: TextStyle(fontFamily: 'SpaceMono', fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white),
+  bodyMedium: TextStyle(fontFamily: 'SpaceMono', fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white70),
+  bodySmall: TextStyle(fontFamily: 'SpaceMono', fontSize: 12, fontWeight: FontWeight.w400, color: Colors.white60),
+  labelLarge: TextStyle(fontFamily: 'SpaceMono', fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white),
+  labelMedium: TextStyle(fontFamily: 'SpaceMono', fontSize: 13, fontWeight: FontWeight.w500, color: Colors.white),
+  labelSmall: TextStyle(fontFamily: 'SpaceMono', fontSize: 10, fontWeight: FontWeight.w500, color: Colors.white),
 );
 
 final ThemeData theme = ThemeData(
@@ -110,10 +47,11 @@ final ThemeData theme = ThemeData(
 
   appBarTheme: AppBarTheme(
     backgroundColor: const Color(0xFF10171D),
-    titleTextStyle: GoogleFonts.ibmPlexMono(
+    titleTextStyle: TextStyle(
       color: Colors.white,
       fontSize: 20,
       fontWeight: FontWeight.w600,
+      fontFamily: 'SpaceMono',
     ),
     iconTheme: const IconThemeData(color: Colors.white),
   ),

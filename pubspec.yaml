@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.8.0
-  google_fonts: ^6.2.1
   photo_view: ^0.15.0
   url_launcher: ^6.3.1
   web: ^1.1.1
@@ -22,6 +21,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: 'SpaceMono'
+      fonts:
+        - asset: assets/fonts/space-mono.ttf
+        - asset: assets/fonts/space-mono-bold.ttf
+          weight: 700
+
   assets:
-    - assets/
-    - assets/designs/
+    - assets/fonts/

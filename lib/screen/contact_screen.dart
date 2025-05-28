@@ -10,17 +10,35 @@ class ContactScreen extends StatefulWidget {
   State<ContactScreen> createState() => _ContactScreenState();
 }
 
-class _ContactScreenState extends State<ContactScreen> {
-  double _opacity = 0.0;
+class _ContactScreenState extends State<ContactScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _slideAnim;
+  late Animation<double> _opacityAnim;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        _opacity = 1.0;
-      });
-    });
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 400),
+    );
+
+    final curve = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
+
+    _slideAnim = Tween<Offset>(
+      begin: Offset(0, 0.03),
+      end: Offset.zero,
+    ).animate(curve);
+    _opacityAnim = Tween<double>(begin: 0, end: 1).animate(curve);
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   List<(String, String, IconData)> contactLinks = [
@@ -57,37 +75,42 @@ class _ContactScreenState extends State<ContactScreen> {
             orienatation == Orientation.landscape ||
             MediaQuery.of(context).size.width > Layout.maxContentWidth;
 
-        return AnimatedOpacity(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          opacity: _opacity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Contact Me', style: textTheme.headlineSmall),
-              const Divider(),
-              const SizedBox(height: 32),
-              isWide
-                  ? Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: _buildContactInfo(contactLinks, textTheme),
-                      ),
-                      const SizedBox(width: 32),
-                      Expanded(flex: 2, child: _buildImage()),
-                    ],
-                  )
-                  : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildContactInfo(contactLinks, textTheme, isWide: false),
-                      const SizedBox(height: 32),
-                      _buildImage(),
-                    ],
-                  ),
-            ],
+        return SlideTransition(
+          position: _slideAnim,
+          child: FadeTransition(
+            opacity: _opacityAnim,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Contact Me', style: textTheme.headlineSmall),
+                const Divider(),
+                const SizedBox(height: 32),
+                isWide
+                    ? Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: _buildContactInfo(contactLinks, textTheme),
+                        ),
+                        const SizedBox(width: 32),
+                        Expanded(flex: 2, child: _buildImage()),
+                      ],
+                    )
+                    : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildContactInfo(
+                          contactLinks,
+                          textTheme,
+                          isWide: false,
+                        ),
+                        const SizedBox(height: 32),
+                        _buildImage(),
+                      ],
+                    ),
+              ],
+            ),
           ),
         );
       },
@@ -134,8 +157,8 @@ class _ContactScreenState extends State<ContactScreen> {
   Widget _buildImage() {
     return AspectRatio(
       aspectRatio: 8.5 / 10,
-      child: Image.asset(
-        'assets/my_photo.jpg',
+      child: Image.network(
+        'https://aryan-trivedi.vercel.app/public/my_photo.jpg',
         filterQuality: FilterQuality.high,
         fit: BoxFit.cover,
       ),
