@@ -83,7 +83,7 @@ class _WorkScreenState extends State<WorkScreen>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Development', style: textTheme.headlineSmall),
+              Text('Development', style: textTheme.bodyLarge),
               const Divider(),
               const SizedBox(height: 16),
               Text(
@@ -91,7 +91,7 @@ class _WorkScreenState extends State<WorkScreen>
                 style: textTheme.bodyLarge,
               ),
               const SizedBox(height: 32),
-              Text('UI/UX Designs', style: textTheme.headlineSmall),
+              Text('UI/UX Designs', style: textTheme.bodyLarge),
               const Divider(),
               const SizedBox(height: 16),
               Container(

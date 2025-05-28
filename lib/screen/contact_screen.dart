@@ -82,7 +82,7 @@ class _ContactScreenState extends State<ContactScreen>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Contact Me', style: textTheme.headlineSmall),
+                Text('Contact Me', style: textTheme.bodyLarge),
                 const Divider(),
                 const SizedBox(height: 32),
                 isWide
