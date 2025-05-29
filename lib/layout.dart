@@ -40,6 +40,7 @@ class _LayoutState extends State<Layout> {
                   _buildAppBar(),
                   const SizedBox(height: 64),
                   _sectionWidgets[currentSection] ?? const HomeScreen(),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
