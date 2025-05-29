@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AnimatedButton extends StatefulWidget {
@@ -15,7 +16,10 @@ class _AnimatedButtonState extends State<AnimatedButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        debugPrint("View Resume tapped");
+        launchUrl(
+          Uri.parse("https://aryan-trivedi.vercel.app/public/pdfs/resume.pdf"),
+          mode: LaunchMode.externalApplication,
+        );
       },
       child: MouseRegion(
         onEnter: (_) => setState(() => isHovered = true),
