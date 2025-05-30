@@ -13,9 +13,17 @@ class _AnimatedChipState extends State<AnimatedChip> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => isHovered = true),
-      onExit: (_) => setState(() => isHovered = false),
+    return InkWell(
+      onHover: (hovering) {
+        setState(() {
+          isHovered = hovering;
+        });
+      },
+      onTap: () {},
+      hoverColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         alignment: Alignment.center,

@@ -25,26 +25,25 @@ class _AnimatedTextButtonState extends State<AnimatedTextButton> {
         _isHovered || widget.isSelected
             ? textTheme?.copyWith(color: Theme.of(context).primaryColor)
             : textTheme;
-    return MouseRegion(
-      onEnter:
-          (event) => setState(() {
-            _isHovered = true;
-          }),
-      onExit:
-          (event) => setState(() {
-            _isHovered = false;
-          }),
+    return InkWell(
+      onTap: widget.onTap,
+      onHover: (hovering) {
+        setState(() {
+          _isHovered = hovering;
+        });
+      },
+      hoverColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         spacing: 2,
         children: [
-          GestureDetector(
-            onTap: widget.onTap,
-            child: AnimatedDefaultTextStyle(
-              style: textStyle!,
-              duration: const Duration(milliseconds: 200),
-              child: Text(widget.label),
-            ),
+          AnimatedDefaultTextStyle(
+            style: textStyle!,
+            duration: const Duration(milliseconds: 200),
+            child: Text(widget.label),
           ),
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),

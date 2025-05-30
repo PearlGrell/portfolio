@@ -19,16 +19,21 @@ class _AnimatedTextState extends State<AnimatedText> {
         _isHovered
             ? textTheme?.copyWith(color: Theme.of(context).primaryColor)
             : textTheme;
-    return GestureDetector(
+    return InkWell(
       onTap: widget.onTap,
-      child: MouseRegion(
-        onEnter: (_) => setState(() => _isHovered = true),
-        onExit: (_) => setState(() => _isHovered = false),
-        child: AnimatedDefaultTextStyle(
-          style: textStyle!,
-          duration: const Duration(milliseconds: 200),
-          child: Text(widget.text),
-        ),
+      onHover: (hovering) {
+        setState(() {
+          _isHovered = hovering;
+        });
+      },
+      hoverColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      child: AnimatedDefaultTextStyle(
+        style: textStyle!,
+        duration: const Duration(milliseconds: 200),
+        child: Text(widget.text),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -47,6 +49,25 @@ class _WorkScreenState extends State<WorkScreen>
     _opacityAnim = Tween<double>(begin: 0, end: 1).animate(curve);
 
     _controller.forward();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Timer.periodic(const Duration(seconds: 5), (time){
+        if (pageController.hasClients) {
+          if (_currentPage < _designs.length - 1) {
+            pageController.nextPage(
+              curve: Curves.easeInOut,
+              duration: const Duration(milliseconds: 300),
+            );
+          } else {
+            pageController.animateToPage(
+              0,
+              curve: Curves.easeInCubic,
+              duration: const Duration(milliseconds: 300),
+            );
+          }
+        }
+      });
+    });
   }
 
   @override
@@ -189,7 +210,11 @@ class _WorkScreenState extends State<WorkScreen>
   Widget _buildRepo((String, String, String, Language) repo) {
     final (url, name, description, lang) = repo;
 
-    return GestureDetector(
+    return InkWell(
+      hoverColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       onTap: () => launchUrl(Uri.parse(url)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -281,7 +306,11 @@ class _WorkScreenState extends State<WorkScreen>
                   _designs[_currentPage].$2,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                GestureDetector(
+                InkWell(
+                  hoverColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
                   onTap: () async {
                     final url = Uri.parse(_designs[_currentPage].$1);
                     if (await canLaunchUrl(url)) {

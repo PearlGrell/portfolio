@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/components/animated_button.dart';
 import 'package:portfolio/components/animated_chip.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -144,7 +143,11 @@ class _HomeScreenState extends State<HomeScreen>
                       Expanded(child: _buildText(item.$1, textTheme)),
                       const SizedBox(width: 8),
                       if (item.$2 != null)
-                        GestureDetector(
+                        InkWell(
+                          hoverColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
                           onTap: () async {
                             if (item.$2 != null) {
                               launchUrl(
