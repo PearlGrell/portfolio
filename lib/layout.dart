@@ -39,7 +39,10 @@ class _LayoutState extends State<Layout> {
                   const SizedBox(height: 32),
                   _buildAppBar(),
                   const SizedBox(height: 64),
-                  _sectionWidgets[currentSection] ?? const HomeScreen(),
+                  IndexedStack(
+                    index: currentSection.index,
+                    children: _sectionWidgets.values.toList(),
+                  ),
                   const SizedBox(height: 16),
                 ],
               ),
@@ -74,10 +77,8 @@ class _LayoutState extends State<Layout> {
   }
 
   void _selectSection(Section section) {
-    if (currentSection != section) {
-      setState(() {
-        currentSection = section;
-      });
-    }
+    setState(() {
+      currentSection = section;
+    });
   }
 }
