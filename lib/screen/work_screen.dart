@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-enum Language { dart, typescript, react }
+enum Language { dart, typescript, react, nextjs }
 
 extension LanguageExtension on Language {
   String get name {
@@ -15,6 +15,8 @@ extension LanguageExtension on Language {
         return 'TypeScript';
       case Language.react:
         return 'React';
+      case Language.nextjs:
+        return 'Next.js';
     }
   }
 }
@@ -114,10 +116,10 @@ class _WorkScreenState extends State<WorkScreen>
       Language.dart,
     ),
     (
-      'https://www.github.com/PearlGrell/blog-site-backend',
-      'Blog Site Backend',
-      "A backend for a blog site built with Express.js and TypeScript.",
-      Language.typescript,
+      'https://www.github.com/PearlGrell/synapse',
+      'Synapse',
+      "A RAG-AI based application for generating blueprints from prompt, and generate content from it.",
+      Language.nextjs,
     ),
     (
       'https://www.github.com/PearlGrell/whatsapp-chat-analysis',
